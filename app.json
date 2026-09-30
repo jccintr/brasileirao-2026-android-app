@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Brasileirão 2026",
+    "slug": "brasileirao-2026",
+    "scheme": "brasileirao2026",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "backgroundColor": "#009739",
+      "resizeMode": "contain"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.julio.brasileirao2026",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#009739"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.julio.brasileirao2026",
+      "supportsTablet": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
