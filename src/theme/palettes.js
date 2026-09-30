@@ -15,6 +15,10 @@ export const palettes = {
     headerText: "#FFFFFF",
     tabBarBackground: "#FFFFFF",
     tabBarInactive: "#9AA39A",
+    libertadores: "#1D4ED8",
+    libertadoresPre: "#60A5FA",
+    sudamericana: "#F59E0B",
+    relegation: "#D6473C",
   },
   dark: {
     mode: "dark",
@@ -32,5 +36,9 @@ export const palettes = {
     headerText: "#F2F4F2",
     tabBarBackground: "#161D17",
     tabBarInactive: "#5C665D",
+    libertadores: "#3B82F6",
+    libertadoresPre: "#93C5FD",
+    sudamericana: "#FBBF24",
+    relegation: "#E8695F",
   },
 };
