@@ -13,6 +13,13 @@ export function getMatchesByMatchday(matchday) {
   return apiRequest(`/competitions/${COMPETITION_CODE}/matches?matchday=${matchday}`);
 }
 
+// Todas as partidas da temporada de uma vez (todas as rodadas). Usado pela
+// tela de Rodadas pra permitir navegação por gesto/seleção sem precisar de
+// uma chamada por rodada, e pra descobrir a rodada atual pela data.
+export function getAllMatches() {
+  return apiRequest(`/competitions/${COMPETITION_CODE}/matches`);
+}
+
 export function getTeams(season = SEASON) {
   return apiRequest(`/competitions/${COMPETITION_CODE}/teams?season=${season}`);
 }

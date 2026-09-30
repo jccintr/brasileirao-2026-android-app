@@ -5,10 +5,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { getTeamMatches } from "../api/football";
 import { useAppTheme } from "../theme/ThemeContext";
 import { MatchCard } from "../components/MatchCard";
+import { ScreenHeader } from "../components/ScreenHeader";
 import { LoadingState, ErrorState } from "../components/LoadingState";
 
-export function TeamDetailScreen({ route }) {
-  const { teamId } = route.params;
+export function TeamDetailScreen({ route, navigation }) {
+  const { teamId, teamName } = route.params;
   const { colors } = useAppTheme();
   const [matches, setMatches] = useState(null);
   const [error, setError] = useState(null);
@@ -42,26 +43,28 @@ export function TeamDetailScreen({ route }) {
     ].filter((s) => s.data.length > 0);
   }, [matches]);
 
-  if (matches === null && !error) return <LoadingState label="Carregando jogos..." />;
-  if (error) return <ErrorState message={error} onRetry={load} />;
-
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right", "bottom"]}>
-      <SectionList
-        sections={sections}
-        keyExtractor={(item) => String(item.id)}
-        contentContainerStyle={styles.list}
-        stickySectionHeadersEnabled={false}
-        renderSectionHeader={({ section }) => (
-          <Text style={[styles.sectionTitle, { color: colors.textSecondary, backgroundColor: colors.background }]}>
-            {section.title}
-          </Text>
-        )}
-        renderItem={({ item }) => <MatchCard match={item} />}
-        ListEmptyComponent={
-          <Text style={[styles.empty, { color: colors.textMuted }]}>Nenhuma partida encontrada.</Text>
-        }
-      />
+      <ScreenHeader title={teamName ?? "Equipe"} onBack={() => navigation.goBack()} />
+      {matches === null && !error && <LoadingState label="Carregando jogos..." />}
+      {error && <ErrorState message={error} onRetry={load} />}
+      {matches !== null && !error && (
+        <SectionList
+          sections={sections}
+          keyExtractor={(item) => String(item.id)}
+          contentContainerStyle={styles.list}
+          stickySectionHeadersEnabled={false}
+          renderSectionHeader={({ section }) => (
+            <Text style={[styles.sectionTitle, { color: colors.textSecondary, backgroundColor: colors.background }]}>
+              {section.title}
+            </Text>
+          )}
+          renderItem={({ item }) => <MatchCard match={item} />}
+          ListEmptyComponent={
+            <Text style={[styles.empty, { color: colors.textMuted }]}>Nenhuma partida encontrada.</Text>
+          }
+        />
+      )}
     </SafeAreaView>
   );
 }

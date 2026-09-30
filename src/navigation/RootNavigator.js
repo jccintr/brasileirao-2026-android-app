@@ -22,15 +22,8 @@ const TAB_ICONS = {
 };
 
 function TeamsStackNavigator() {
-  const { colors } = useAppTheme();
   return (
-    <TeamsStack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: colors.headerBackground },
-        headerTintColor: colors.headerText,
-        headerTitleStyle: { fontWeight: "700" },
-      }}
-    >
+    <TeamsStack.Navigator screenOptions={{ headerShown: false }}>
       <TeamsStack.Screen name="TeamsList" component={TeamsScreen} options={{ title: "Equipes" }} />
       <TeamsStack.Screen
         name="TeamDetail"

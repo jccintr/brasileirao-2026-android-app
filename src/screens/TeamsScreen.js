@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { getTeams } from "../api/football";
 import { useAppTheme } from "../theme/ThemeContext";
 import { TeamCrest } from "../components/TeamCrest";
+import { ScreenHeader } from "../components/ScreenHeader";
 import { LoadingState, ErrorState } from "../components/LoadingState";
 
 export function TeamsScreen({ navigation }) {
@@ -27,12 +28,13 @@ export function TeamsScreen({ navigation }) {
     load();
   }, [load]);
 
-  if (teams === null && !error) return <LoadingState label="Carregando equipes..." />;
-  if (error) return <ErrorState message={error} onRetry={load} />;
-
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right"]}>
-      <FlatList
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right", "bottom"]}>
+      <ScreenHeader title="Equipes" />
+      {teams === null && !error && <LoadingState label="Carregando equipes..." />}
+      {error && <ErrorState message={error} onRetry={load} />}
+      {teams !== null && !error && (
+        <FlatList
         data={teams}
         keyExtractor={(item) => String(item.id)}
         numColumns={2}
@@ -54,7 +56,8 @@ export function TeamsScreen({ navigation }) {
             </Text>
           </Pressable>
         )}
-      />
+        />
+      )}
     </SafeAreaView>
   );
 }
