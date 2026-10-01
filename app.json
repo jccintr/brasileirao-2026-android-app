@@ -12,7 +12,9 @@
       "backgroundColor": "#009739",
       "resizeMode": "contain"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "android": {
       "package": "com.julio.brasileirao2026",
       "adaptiveIcon": {
@@ -26,6 +28,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "262021e2-3fcf-4b93-9ba7-de5125636efe"
+      }
     }
   }
 }

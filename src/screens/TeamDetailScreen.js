@@ -44,7 +44,7 @@ export function TeamDetailScreen({ route, navigation }) {
   }, [matches]);
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right", "bottom"]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right"]}>
       <ScreenHeader title={teamName ?? "Equipe"} onBack={() => navigation.goBack()} />
       {matches === null && !error && <LoadingState label="Carregando jogos..." />}
       {error && <ErrorState message={error} onRetry={load} />}

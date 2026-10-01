@@ -29,7 +29,7 @@ export function TeamsScreen({ navigation }) {
   }, [load]);
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right", "bottom"]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["left", "right"]}>
       <ScreenHeader title="Equipes" />
       {teams === null && !error && <LoadingState label="Carregando equipes..." />}
       {error && <ErrorState message={error} onRetry={load} />}
